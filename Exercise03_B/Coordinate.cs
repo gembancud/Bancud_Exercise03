@@ -4,6 +4,8 @@
     {
         private double _y;
         private double _x;
+        private double _importance;
+
 
         public double Y
         {
@@ -17,14 +19,21 @@
             set { _x = value; }
         }
 
-        private double _importance;
-
         public double Importance
         {
             get { return _importance; }
             set { _importance = value; }
         }
 
+        public Coordinate()
+        {
+            
+        }
 
+        public Coordinate(double x, double y)
+        {
+            _x = x;
+            _y = y;
+        }
     }
 }

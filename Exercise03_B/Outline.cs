@@ -19,6 +19,7 @@ namespace Exercise03_B
 
         public Outline()
         {
+            _coordinateList= new LinkedList<Coordinate>();
         }
 
         public Outline Evolve()
@@ -42,18 +43,18 @@ namespace Exercise03_B
             return newOutline;
         }
 
-        public LinkedList<Coordinate> CloneCoordinateLinkedList()
+        private LinkedList<Coordinate> CloneCoordinateLinkedList()
         {
             LinkedList<Coordinate> newCoordinateLinkedList= new LinkedList<Coordinate>();
             foreach (Node<Coordinate> node in _coordinateList)
             {
-                newCoordinateLinkedList.AddToTail(node);
+                newCoordinateLinkedList.AddToTail(node.Data);
             }
 
             return newCoordinateLinkedList;
         }
 
-        public void ImprintImportance()
+        private void ImprintImportance()
         {
             foreach (Node<Coordinate> coor in _coordinateList)
             {
@@ -61,7 +62,7 @@ namespace Exercise03_B
             }
         }
 
-        public double GetImportance(Node<Coordinate> coor)
+        private double GetImportance(Node<Coordinate> coor)
         {
             double d1 = GetDistance(coor.Prev.Data, coor.Data);
             double d2 = GetDistance(coor.Data, coor.Next.Data);
@@ -71,7 +72,7 @@ namespace Exercise03_B
 
         public double GetDistance(Coordinate first, Coordinate second)
         {
-            double sumOfSquares = (Convert.ToInt32(first.X - second.X)) ^ 2 + (Convert.ToInt32(first.Y - second.Y)) ^ 2;
+            double sumOfSquares = Math.Pow(first.X - second.X, 2) + Math.Pow(first.Y - second.Y, 2);
             double distance = Math.Sqrt(sumOfSquares);
             return distance;
         }

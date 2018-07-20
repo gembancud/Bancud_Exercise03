@@ -5,6 +5,7 @@
         public T Data { get; set; }
         public Node<T> Next { get; set; }
         public Node<T> Prev { get; set; }
+        public int Index;
 
         public Node(T data, Node<T> prev, Node<T> next)
         {
@@ -16,6 +17,11 @@
         public Node(T data)
         {
             Data = data;
+        }
+
+        public Node()
+        {
+            
         }
     }
 }

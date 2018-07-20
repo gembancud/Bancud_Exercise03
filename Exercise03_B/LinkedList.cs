@@ -33,6 +33,7 @@ namespace Exercise03_B
         private void AddBetween(T data, Node<T> prev, Node<T> next)
         {
             var newNode = new Node<T>(data, prev, next);
+            newNode.Index = Size;
             prev.Next = newNode;
             next.Prev = newNode;
 
@@ -64,6 +65,7 @@ namespace Exercise03_B
 
             Head = Tail.Next;
             Tail = Head.Prev;
+
         }
         public Node<T> RemoveAt(int i)
         {

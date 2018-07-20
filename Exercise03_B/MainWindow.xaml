@@ -5,19 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exercise03_B"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="750" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Column="1" Grid.Row="1" Background="AntiqueWhite"></Canvas>
+        <Canvas x:Name="OutlineCanvas" Grid.Column="1" Grid.Row="1" Background="AntiqueWhite" Width="900" Height="475"></Canvas>
+        <StackPanel Grid.Column="1" Grid.Row="1"  VerticalAlignment="Bottom" Orientation="Horizontal">
+            <TextBlock FontSize="18" >Generation:  </TextBlock>
+            <TextBlock x:Name="GenerationCount" FontSize="18" Margin="5,0,0,0"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <CheckBox x:Name="NodesCheckBox" IsChecked="True">Show Nodes</CheckBox>
+            <CheckBox x:Name="CoordinatesCheckBox" IsChecked="True">Show Coordinates</CheckBox>
+            <CheckBox x:Name="LinesCheckBox" IsChecked="True">Show Lines</CheckBox>
+            <CheckBox x:Name="DistanceCheckBox" IsChecked="True">Show Distance</CheckBox>
+            <CheckBox x:Name="ImportanceCheckBox" IsChecked="True">Show Importance</CheckBox>
+
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Button x:Name="CreateOutlineButton" FontSize="18" Click="CreateOutlineEvent" >Create Outline</Button>
+            <Button x:Name="FinishCreationButton" FontSize="18" IsEnabled="False" Click="FinishOutlineEvent"> Finish Creation</Button>
+            <Button x:Name="EvolveButton" FontSize="18" Click="EvolveButtonEvent" IsEnabled="False">Evolve</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock FontSize="18"> Number of Points:</TextBlock>
+                <TextBox x:Name="GenerationTextBox" Width="50" IsEnabled="False"></TextBox>
+                <Button x:Name="PEvolutionButton" FontSize="18" IsEnabled="False" Click="PEvolutionButtonEvent">Progressive Evolution</Button>
+                <Button x:Name="PEvolutionBackButton" FontSize="18" IsEnabled="False" Click="PEvolutionBackButtonCommand">Step Back</Button>
+                <Button x:Name="PEvolutionForwardButton" FontSize="18" IsEnabled="False" Click="PEvolutionForwardButtonCommand">Step Forward</Button>
+                <Button x:Name="PEvolutionOriginButton" FontSize="18" IsEnabled="False" Click="PEvolutionOriginButtonCommand">Go to Origin</Button>
+                <Button x:Name="PEvolutionFinaleButton" FontSize="18" IsEnabled="False" Click="PEvolutionFinaleButtonCommand">Go to Finale</Button>
+            </StackPanel>
+            <Button x:Name="ResetButton" FontSize="18" Click="ResetButtonCommand" IsEnabled="False">Reset</Button>
+        </StackPanel>
+
     </Grid>
 </Window>
